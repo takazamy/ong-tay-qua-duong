@@ -1,0 +1,27 @@
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.exe
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.pdb
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Properties.Resources.resources
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.csproj.GenerateResource.Cache
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.exe
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.pdb
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Form1.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.exe
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.pdb
+G:\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.exe
+G:\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.pdb
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\ResolveAssemblyReference.cache
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Form1.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Properties.Resources.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\ResGen.read.1.tlog
+G:\C#\TestDirectX2\TestDirectX2\obj\Release\ResGen.write.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.exe
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.pdb
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.exe
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Release\TestDirectX2.pdb
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\ResolveAssemblyReference.cache
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Form1.resources
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\TestDirectX2.Properties.Resources.resources
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\ResGen.read.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Release\ResGen.write.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Release\Assets\wallpaper-1.jpg
