@@ -1,0 +1,40 @@
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.exe
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Properties.Resources.resources
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.csproj.GenerateResource.Cache
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+C:\Users\Takan\Desktop\Project\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Form1.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+G:\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.exe
+G:\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\ResolveAssemblyReference.cache
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Form1.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Properties.Resources.resources
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\ResGen.read.1.tlog
+G:\C#\TestDirectX2\TestDirectX2\obj\Debug\ResGen.write.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.exe
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\ResolveAssemblyReference.cache
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Form1.resources
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Properties.Resources.resources
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\ResGen.read.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\obj\Debug\ResGen.write.1.tlog
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Debug\Assets\wallpaper.jpg
+E:\Hoc Tap\C#\TestDirectX2\TestDirectX2\bin\Debug\Assets\wallpaper_1.jpg
+G:\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+G:\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+G:\TestDirectX2\TestDirectX2\obj\Debug\ResolveAssemblyReference.cache
+G:\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Form1.resources
+G:\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Properties.Resources.resources
+G:\TestDirectX2\TestDirectX2\obj\Debug\ResGen.read.1.tlog
+G:\TestDirectX2\TestDirectX2\obj\Debug\ResGen.write.1.tlog
+G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\wallpaper.jpg
+G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\wallpaper_1.jpg
+G:\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.exe
+G:\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
+G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\walk.png
