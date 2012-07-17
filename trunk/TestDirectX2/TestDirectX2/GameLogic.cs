@@ -14,7 +14,8 @@ namespace TestDirectX2
         public enum GameState
         {
             RUN = 0,
-            EXIT = 1
+            EXIT = 1,
+            PAUSE = 2
         }
 
         private Control _renderTarget;
