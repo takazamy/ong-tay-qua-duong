@@ -81,6 +81,7 @@
     <Compile Include="Core\DxInitKeyboard.cs" />
     <Compile Include="Core\DxInitMouse.cs" />
     <Compile Include="Core\DxInitSprite.cs" />
+    <Compile Include="Core\DxScreen.cs" />
     <Compile Include="Core\DxTimer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
