@@ -38,3 +38,5 @@ G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\wallpaper_1.jpg
 G:\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.exe
 G:\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
 G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\walk.png
+C:\Users\Takan\Desktop\ong-tay-qua-duong\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+C:\Users\Takan\Desktop\ong-tay-qua-duong\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
