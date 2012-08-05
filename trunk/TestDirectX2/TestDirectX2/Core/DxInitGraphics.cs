@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace TestDirectX2
 {
-    class DxInitGraphics
+    public class DxInitGraphics
     {
 
         private Device _graphicsDevice = null;

@@ -9,7 +9,7 @@ namespace TestDirectX2.Core
 {
     public class DxInitSprite:DxInitImage
     {
-        private int _framewidth;
+        protected int _framewidth;
 
         public int Framewidth
         {
@@ -17,7 +17,7 @@ namespace TestDirectX2.Core
             set { _framewidth = value; }
         }
 
-        private int _frameheight;
+        protected int _frameheight;
 
         public int Frameheight
         {
@@ -25,7 +25,7 @@ namespace TestDirectX2.Core
             set { _frameheight = value; }
         }
 
-        private int _rows;
+        protected int _rows;
 
         public int Rows
         {
@@ -33,7 +33,7 @@ namespace TestDirectX2.Core
            
         }
 
-        private int _columns;
+        protected int _columns;
 
         public int Columns
         {

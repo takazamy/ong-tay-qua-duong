@@ -7,7 +7,7 @@ using Microsoft.DirectX.DirectDraw;
 
 namespace TestDirectX2.Core
 {
-    class DxScreen
+    public class DxScreen
     {
         protected Point _location;
         public Point Location

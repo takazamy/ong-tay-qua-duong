@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TestDirectX2.Core
 {
-    class DxInitMouse
+   public  class DxInitMouse
     { Device _mice = null;
         Control _parent;
 

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TestDirectX2.Core
 {
-    class DxInitKeyboard
+    public class DxInitKeyboard
     {
         Device _keyboardDevice = null;
         Control _parent;
