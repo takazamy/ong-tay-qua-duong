@@ -7,7 +7,7 @@ using Microsoft.DirectX.DirectDraw;
 using TestDirectX2.Core;
 using TestDirectX2;
 
-namespace DirectXForm
+namespace TestDirectX2
 {
     public class ScrollingBackground : DxScreen
     {
