@@ -6,7 +6,7 @@ using Microsoft.DirectX.DirectDraw;
 
 namespace TestDirectX2.Core
 {
-    class DxAnimation
+    public class DxAnimation
     {
         private DxInitSprite _sprite;
 

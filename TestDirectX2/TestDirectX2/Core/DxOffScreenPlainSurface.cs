@@ -6,7 +6,7 @@ using Microsoft.DirectX.DirectDraw;
 
 namespace TestDirectX2.Core
 {
-    class DxOffScreenPlainSurface
+    public class DxOffScreenPlainSurface
     {
         private Surface _surface;
 
