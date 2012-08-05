@@ -13,9 +13,10 @@ namespace TestDirectX2
     {
         public enum GameState
         {
-            RUN = 0,
-            EXIT = 1,
-            PAUSE = 2
+            GS_SPLASH_SCREEN = 0,
+            GS_MENU = 1,
+            GS_MAIN_GAME = 2,
+            GS_EXIT = 3,
         }
 
         private Control _renderTarget;
@@ -29,16 +30,21 @@ namespace TestDirectX2
         private double _fps_ellapsedMillisec = 0;
 
         /****** MY GAME'S COMPONENTS*******/
-        DxInitSprite _sprite;
+        
+
+        ScreenManager _screenManager = null;
+
         DxAnimation _animation;
 
-        GameState _state = GameState.RUN;
+        GameState _state = GameState.GS_SPLASH_SCREEN;
+        ScrollingBackground _scrollingBG;
 
         public GameLogic(Control RenderTarget)
         {
             _renderTarget = RenderTarget;
             _graphics = new DxInitGraphics(_renderTarget);
             _keyboard = new DxInitKeyboard(_renderTarget);
+
             DxTimer.Init();
             RenderTarget.GotFocus += new EventHandler(target_GotFocus);
 
@@ -47,13 +53,13 @@ namespace TestDirectX2
         void target_GotFocus(object sender, EventArgs e)
         {
             _graphics.CreateSurfaces();
-            _sprite.CreateSurface();
+           // _sprite.CreateSurface();
         }
 
         public void GameLoop()
         {
             DxTimer.Start();
-            while (_renderTarget.Created && _state == GameState.RUN)
+            while (_renderTarget.Created && _state != GameState.GS_EXIT)
             {
                 _ellapsedMilisec += DxTimer.GetElapsedMilliseconds();
                 if (_fps_ellapsedMillisec >= 1000.0f)
@@ -81,22 +87,44 @@ namespace TestDirectX2
 
         public void Initialize()
         {
-            _sprite = new DxInitSprite("Assets/walk.png", _graphics.GraphicsDevice, 104, 150);
-            _animation = new DxAnimation(_sprite, 30, true);
+            //_sprite = new DxInitSprite("Assets/walk.png", _graphics.GraphicsDevice, 104, 150);
+            //_animation = new DxAnimation(_sprite, 30, true);
+
+            _screenManager = new ScreenManager();
+
+            _screenManager.Append(new SplashScreen(_graphics, Point.Empty,
+                new Size(800, 600),
+                5000));
+
+            _screenManager.PlayScreen(0);
+
+           // _tiledMap = DxTiledMap.Load("Assets/map01.xml", _graphics);
+
+           // List<DxInitImage> imgs = new List<DxInitImage>();
+            //imgs.Add(new DxInitImage("Assets/cave_bg.png", _graphics.GraphicsDevice));
+           // imgs.Add(new DxInitImage("Assets/cave_bg.png", _graphics.GraphicsDevice));
+            _scrollingBG = new ScrollingBackground(_graphics, this._renderTarget.Location, this._renderTarget.ClientSize);
+            _scrollingBG.MoveSpeed = -.2f;
         }
 
         public void Update(double deltaTime)
         {
-            KeyboardState state = _keyboard.State;
-            if (state[Key.Escape])
-            {
-                _state = GameState.EXIT;
-            }
+            KeyboardState keyState = _keyboard.State;
+            HandleKeyboard(keyState);
 
-            _animation.Update((float)deltaTime);
+            _scrollingBG.Update(deltaTime);
+
+            _screenManager.Update(deltaTime);
          //   x++;
         }
 
+        public void HandleKeyboard(KeyboardState keyState)
+        {
+            if (keyState[Key.Escape])
+            {
+                _state = GameState.GS_EXIT;
+            }
+        }
         int x = 0;
         public void Draw(double deltaTime)
         {
@@ -105,7 +133,9 @@ namespace TestDirectX2
 
           //  _sprite.DrawFast(x, 50, 1, _graphics.SecondarySurface, DrawFastFlags.Wait);
 
-            _animation.Draw(50, 200, _graphics.SecondarySurface);
+            _scrollingBG.Draw(deltaTime);
+
+            _graphics.SecondarySurface.DrawFast(0, 0, _scrollingBG.Surface, DrawFastFlags.Wait);
 
             _graphics.SecondarySurface.DrawText(0, 0, "FPS: " + _game_fps, false);
 
