@@ -9,7 +9,7 @@ namespace TestDirectX2.Screen
 {
     public class InstructionScreen:DxScreen
     {
-        public InstructionScreen(DxInitGraphics graphics, Point location, Size size, double liveTime):
-            base(graphics, location, size) { }
+        public InstructionScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size, double liveTime):
+            base(scrManager,graphics, location, size) { }
     }
 }

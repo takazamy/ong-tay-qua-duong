@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TestDirectX2.Core;
+using Microsoft.DirectX.DirectInput;
 
 namespace TestDirectX2
 {
     public class ScreenManager
     {
+        public enum GameState
+        {
+            GS_SPLASH_SCREEN = 0,
+            GS_MENU = 1,
+            GS_MAIN_GAME = 2,
+            GS_EXIT = 3,
+        }
+
+        public GameState _state = GameState.GS_SPLASH_SCREEN;
+
         List<DxScreen> _children;
 
         internal List<DxScreen> Children
@@ -52,9 +63,9 @@ namespace TestDirectX2
             _currentScreen = _children[--_currentIndex];
         }
 
-        public void Update(double deltaTime)
+        public void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
         {
-            _currentScreen.Update(deltaTime);
+            _currentScreen.Update(deltaTime, keyState,mouseState);
         }
 
         public void Draw(DxInitGraphics graphics, double deltaTime)
