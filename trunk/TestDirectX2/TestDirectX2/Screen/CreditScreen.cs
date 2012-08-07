@@ -9,7 +9,7 @@ namespace TestDirectX2.Screen
 {
     public class CreditScreen:DxScreen
     {
-        public CreditScreen(DxInitGraphics graphics, Point location, Size size, double liveTime):
-            base(graphics, location, size) { }
+        public CreditScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size, double liveTime):
+            base(scrManager,graphics, location, size) { }
     }
 }

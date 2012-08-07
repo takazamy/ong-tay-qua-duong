@@ -6,6 +6,7 @@ using System.Drawing;
 using Microsoft.DirectX.DirectDraw;
 using TestDirectX2.Core;
 using TestDirectX2;
+using Microsoft.DirectX.DirectInput;
 
 namespace TestDirectX2
 {
@@ -22,9 +23,9 @@ namespace TestDirectX2
         }
 
 
-        public ScrollingBackground(DxInitGraphics graphics, Point location, Size size)
+        public ScrollingBackground(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size)
             :
-            base(graphics, location, size)
+            base(scrManager,graphics, location, size)
         {
             bg1 = new DxInitImage("Assets/cave_bg.png", graphics.GraphicsDevice);
             bg2 = new DxInitImage("Assets/cave_bg.png", graphics.GraphicsDevice);
@@ -33,9 +34,9 @@ namespace TestDirectX2
             point2 = new PointF(800, 0);
         }
 
-        public override void Update(double deltaTime)
+        public override void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
         {
-            base.Update(deltaTime);
+            base.Update(deltaTime, keyState, mouseState);
             point1 = new PointF(point1.X + _moveSpeed, point1.Y);
             point2 = new PointF(point2.X + _moveSpeed, point2.Y);
 
@@ -47,7 +48,7 @@ namespace TestDirectX2
             {
                 point2 = new PointF(point1.X + _size.Width, point2.Y);
             }
-            base.Update(deltaTime);
+            base.Update(deltaTime, keyState, mouseState);
         }
 
         public override void Draw(double deltaTime)
