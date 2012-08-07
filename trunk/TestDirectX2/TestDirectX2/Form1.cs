@@ -18,7 +18,7 @@ namespace TestDirectX2
 
         //DxInitSprite _sprite = null;
        // DxAnimation _animation = null;
-        float deltaTime = 0;
+        //float deltaTime = 0;
         public Form1()
         {
             InitializeComponent();
