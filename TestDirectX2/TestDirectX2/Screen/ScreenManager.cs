@@ -13,8 +13,11 @@ namespace TestDirectX2
         {
             GS_SPLASH_SCREEN = 0,
             GS_MENU = 1,
+            GS_MAP = 5,
+            GS_HELP = 3,
+            GS_CREDIT = 4,
             GS_MAIN_GAME = 2,
-            GS_EXIT = 3,
+            GS_EXIT = 6,
         }
 
         public GameState _state = GameState.GS_SPLASH_SCREEN;
