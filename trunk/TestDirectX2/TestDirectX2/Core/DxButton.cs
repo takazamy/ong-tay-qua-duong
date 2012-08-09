@@ -92,7 +92,7 @@ namespace TestDirectX2.Core
             _bounding = new Rectangle(x, y, base._framewidth, base._frameheight);
         }
 
-        public virtual void Update(float deltaTime, MouseState state)
+        public virtual void Update(double deltaTime, MouseState state)
         {
             _buttons = state.GetMouseButtons();
             //Left Button Click

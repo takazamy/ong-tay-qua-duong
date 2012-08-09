@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using Microsoft.DirectX.DirectDraw;
+using Microsoft.DirectX.DirectInput;
 
 namespace TestDirectX2.Core
 {
@@ -36,9 +37,13 @@ namespace TestDirectX2.Core
             set { _graphics = value; }
         }
 
+        protected KeyboardState _keyState;
+        protected MouseState _mouseState;
+        protected ScreenManager _scrManager;
 
-        public DxScreen(DxInitGraphics graphics, Point location, Size size)
+        public DxScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size)
         {
+            _scrManager = scrManager;
             _graphics = graphics;
             _location = location;
             _size = size;
@@ -58,8 +63,14 @@ namespace TestDirectX2.Core
 
         public virtual void Initialize() { }
 
-        public virtual void Update(double deltaTime) { }
+        public virtual void Update(double deltaTime, KeyboardState keyState, MouseState mouseState ) 
+        {
+            _keyState = keyState;
+            _mouseState = mouseState;
+        }
 
-        public virtual void Draw(double deltaTime) { }
+        public virtual void Draw(double deltaTime) {
+            _graphics.SecondarySurface.DrawFast(_location.X, _location.Y, _surface, DrawFastFlags.Wait);
+        }
     }
 }
