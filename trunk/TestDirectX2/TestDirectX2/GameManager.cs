@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using Microsoft.DirectX.DirectInput;
+using TestDirectX2.Screen;
 
 namespace TestDirectX2
 {
@@ -45,6 +46,8 @@ namespace TestDirectX2
               new Size(800, 600),
               5000));
             _scrManager.Append(new MenuScreen(_scrManager,_graphics,Point.Empty,
+                 new Size(800, 600)));
+            _scrManager.Append(new MainGameScreen(_scrManager, _graphics, Point.Empty,
                  new Size(800, 600)));
         }
         public void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
