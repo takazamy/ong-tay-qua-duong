@@ -48,7 +48,7 @@ namespace TestDirectX2
             _scrManager.Append(new MenuScreen(_scrManager,_graphics,Point.Empty,
                  new Size(800, 600)));
             _scrManager.Append(new MainGameScreen(_scrManager, _graphics, Point.Empty,
-                 new Size(800, 600)));
+                 new Size(800, 600), new Core.DxInitImage("Assets/map1.png",_graphics.GraphicsDevice)));
         }
         public void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
         {
