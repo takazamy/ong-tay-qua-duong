@@ -12,6 +12,21 @@ namespace TestDirectX2
         protected int _hp;
         protected int _damage;
         protected int _power;
-       
+
+        public Character(int hp)
+        { hp = _hp; }
+        public Character(int damage)
+        { damage = _damage; }
+        public Character(int power)
+        { power = _power; }
+        public Character(DxInitSprite image)
+        { image = _image; }
+
+        public virtual void Move()
+        { }
+        public virtual void Attack()
+        { }
     }
+   
+    
 }
