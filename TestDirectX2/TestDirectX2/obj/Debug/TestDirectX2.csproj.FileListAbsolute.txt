@@ -40,3 +40,10 @@ G:\TestDirectX2\TestDirectX2\bin\Debug\TestDirectX2.pdb
 G:\TestDirectX2\TestDirectX2\bin\Debug\Assets\walk.png
 C:\Users\Takan\Desktop\ong-tay-qua-duong\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
 C:\Users\Takan\Desktop\ong-tay-qua-duong\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.exe
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.pdb
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\ResolveAssemblyReference.cache
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Form1.resources
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\TestDirectX2.Properties.Resources.resources
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\ResGen.read.1.tlog
+D:\Tu Quoc Trung\NIIT\Project\TestDirectX2\TestDirectX2\obj\Debug\ResGen.write.1.tlog
