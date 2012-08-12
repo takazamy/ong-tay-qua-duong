@@ -52,23 +52,7 @@ namespace TestDirectX2
         }
         
     }
-    class Player : Character 
-    {
-        public new void Move(KeyboardState keyState)
-        {
-            keyState = 'a';
-            positionX = positionX - _moveSpeed;
-            keyState = 'd';
-            positionX = positionX + _moveSpeed;
-        }
-    }
-    class Enemy : Character 
-    {
-        public new void Move(KeyboardState keyState)
-        {
- 
-        }
-    }
+
    
     
 }
