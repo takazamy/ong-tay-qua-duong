@@ -29,7 +29,6 @@ namespace TestDirectX2
             _power = power;
             _sprite = sprite;
             _moveSpeed = moveSpeed;
-        
         }
 
         public Character() { }
