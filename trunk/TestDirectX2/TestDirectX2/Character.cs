@@ -19,6 +19,12 @@ namespace TestDirectX2
         protected KeyboardState _keyState = null;
         protected MouseState _mouseState = null;
         protected float _moveSpeed = 1;
+        private float x;
+        private float y;
+        private int damage;
+        private int power;
+        private float moveSpeed;
+        private DxInitSprite sprite;
 
         public Character(float x, float y, int hp, int damage, int power , float moveSpeed, DxInitSprite sprite)
         {
@@ -32,6 +38,17 @@ namespace TestDirectX2
         }
 
         public Character() { }
+
+        public Character(float x, float y, int damage, int power, float moveSpeed, DxInitSprite sprite)
+        {
+            // TODO: Complete member initialization
+            this.x = x;
+            this.y = y;
+            this.damage = damage;
+            this.power = power;
+            this.moveSpeed = moveSpeed;
+            this.sprite = sprite;
+        }
 
         public virtual void Move(KeyboardState keyState)
         { }
