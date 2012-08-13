@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="GameLogic.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="MainGameScreen.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Screen\CreditScreen.cs" />
     <Compile Include="Screen\InstructionScreen.cs" />

@@ -25,8 +25,10 @@ namespace TestDirectX2
         private int power;
         private float moveSpeed;
         private DxInitSprite sprite;
+        protected int _direction;
+        private int direction;
 
-        public Character(float x, float y, int hp, int damage, int power , float moveSpeed, DxInitSprite sprite)
+        public Character(float x, float y, int hp, int damage, int power , float moveSpeed, DxInitSprite sprite, int direction)
         {
             positionX = x;
             positionY = y;
@@ -35,6 +37,7 @@ namespace TestDirectX2
             _power = power;
             _sprite = sprite;
             _moveSpeed = moveSpeed;
+            _direction = direction;
         }
 
         public Character() { }
@@ -48,6 +51,18 @@ namespace TestDirectX2
             this.power = power;
             this.moveSpeed = moveSpeed;
             this.sprite = sprite;
+        }
+
+        public Character(float x, float y, int damage, int power, float moveSpeed, DxInitSprite sprite, int direction)
+        {
+            // TODO: Complete member initialization
+            this.x = x;
+            this.y = y;
+            this.damage = damage;
+            this.power = power;
+            this.moveSpeed = moveSpeed;
+            this.sprite = sprite;
+            this.direction = direction;
         }
 
         public virtual void Move(KeyboardState keyState)
