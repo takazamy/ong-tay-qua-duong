@@ -75,5 +75,10 @@ namespace TestDirectX2
         {
             _currentScreen.Draw(deltaTime);
         }
+
+        internal void Append(MainGameScreen mainGameScreen)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
