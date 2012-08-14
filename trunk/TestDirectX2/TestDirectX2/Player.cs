@@ -12,8 +12,8 @@ namespace TestDirectX2
     {
         
 
-        public Player(float x, float y, int hp, int damage, int power, float moveSpeed, DxInitSprite sprite):
-            base(x,y,damage,power,moveSpeed,sprite)
+        public Player(float x, float y, int hp, int damage, int power, float moveSpeed, DxInitSprite sprite,int direction):
+            base(x,y,hp,damage,power,moveSpeed,sprite,direction)
         {
             positionX = x;
             positionY = y;
