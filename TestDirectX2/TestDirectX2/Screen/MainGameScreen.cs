@@ -13,16 +13,18 @@ namespace TestDirectX2.Screen
         //private ScrollingBackground scrBackground;
         //private _map;
         private MapScreen _map;
+        DxInitImage _mapImage;
 
-
-        public MainGameScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size) :
+        public MainGameScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size, DxInitImage mapImage) :
             base(scrManager,graphics, location, size)
         {
+            _mapImage = mapImage;
             Initialize();
         }
         public override void Initialize()
         {
             base.Initialize();
+            _map = new MapScreen(_scrManager, _graphics, _location, _mapImage);
             //_map = new DxInitImage("Assets/map1.png", _graphics.GraphicsDevice);
             _surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
         }
