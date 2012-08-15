@@ -16,8 +16,8 @@ namespace TestDirectX2
         protected int _power = 100;
         protected float positionX = 0;
         protected float positionY = 0;
-        protected KeyboardState _keyState = null;
-        protected MouseState _mouseState = null;
+        protected KeyboardState _keyState;
+        protected MouseState _mouseState;
         protected float _moveSpeed = 1;
         private float x;
         private float y;

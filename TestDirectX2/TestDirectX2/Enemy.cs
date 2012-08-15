@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TestDirectX2.Core;
+using Microsoft.DirectX.DirectInput;
 
 namespace TestDirectX2
 {
@@ -22,21 +23,16 @@ namespace TestDirectX2
         }
 
 
-        public override void Move(Microsoft.DirectX.DirectInput.KeyboardState keyState)
-        {
-            base.Move(keyState);
-
-        }
         public override void Update(double deltaTime, Microsoft.DirectX.DirectInput.KeyboardState keyState, Microsoft.DirectX.DirectInput.MouseState mouseState)
         {
             base.Update(deltaTime, keyState, mouseState);
-            Move(_direction);
+            Move(keyState);
         }
 
-        private void Move(int direction)
+        public override void Move(KeyboardState keyState)
         {
-            throw new NotImplementedException();
-            this._direction = direction;
+            //throw new NotImplementedException();
+            //this._direction = direction;
             if (_direction == -1)
             {
                 positionX = positionX - _moveSpeed; 
