@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using TestDirectX2.Core;
 using Microsoft.DirectX.DirectInput;
+using Microsoft.DirectX.DirectDraw;
 
 
 namespace TestDirectX2
 {
     public class Player:Character
     {
-        
 
         public Player(float x, float y, int hp, int damage, int power, float moveSpeed, DxInitSprite sprite,int direction):
             base(x,y,hp,damage,power,moveSpeed,sprite,direction)
         {
-            positionX = x;
-            positionY = y;
+            PositionX = x;
+            PositionY = y;
             _hp = hp;
             _damage = damage;
             _power = power;
@@ -37,28 +37,28 @@ namespace TestDirectX2
             base.Move(keyState);
             if (_keyState != null)
             {
-                //on escape -> exit
+                //on move left
                 if (_keyState[Key.A])
                 {
-                    positionX = positionX - _moveSpeed;
-                    
+                    PositionX = PositionX - _moveSpeed;
                 }
+
+                //on move right
+
                 if (_keyState[Key.D])
                 {
-                    positionX = positionX + _moveSpeed;
-
+                    PositionX = PositionX + _moveSpeed;
                 }
             }
-           
 
         }
         public override void Attack()
         {
             base.Attack();
         }
-        public override void Draw(double deltaTime)
+        public override void Draw(int x, int y, Surface surface)
         {
-            base.Draw(deltaTime);
+           base.Draw(x,y,surface);
         }
     }
 }
