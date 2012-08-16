@@ -61,10 +61,9 @@ namespace TestDirectX2.Screen
         {
             foreach (Character c in _characterList)
             {
-                if (c.Visible)
-                {
+               
                     c.Draw((int)c.PositionX,(int)c.PositionY,base.Surface);
-                }
+                
             }
             _graphics.SecondarySurface.DrawFast(0, 0, base.Surface, _camera.RectBounding, Microsoft.DirectX.DirectDraw.DrawFastFlags.Wait);
 
