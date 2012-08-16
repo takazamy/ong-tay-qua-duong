@@ -13,10 +13,10 @@ namespace TestDirectX2
         {
             GS_SPLASH_SCREEN = 0,
             GS_MENU = 1,
-            GS_MAP = 5,
-            GS_HELP = 3,
-            GS_CREDIT = 4,
-            GS_MAIN_GAME = 2,
+            GS_LEVEL = 2,
+           // GS_HELP = 3,
+           // GS_CREDIT = 4,
+            GS_MAIN_GAME = 4,
             GS_EXIT = 6,
         }
 
@@ -76,9 +76,6 @@ namespace TestDirectX2
             _currentScreen.Draw(deltaTime);
         }
 
-        internal void Append(MainGameScreen mainGameScreen)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

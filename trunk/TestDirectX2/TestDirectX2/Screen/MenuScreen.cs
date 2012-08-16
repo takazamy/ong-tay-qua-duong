@@ -30,7 +30,7 @@ namespace TestDirectX2
             _playBtn.OnMouseDown = delegate()
             {
                 //Console.WriteLine("Mouse down");
-                _scrManager._state = TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME;
+                _scrManager._state = TestDirectX2.ScreenManager.GameState.GS_LEVEL;
                 _scrManager.NextScreen();
             };
 
