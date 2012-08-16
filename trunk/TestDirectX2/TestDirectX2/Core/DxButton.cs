@@ -83,8 +83,7 @@ namespace TestDirectX2.Core
         }
 
         public DxButton(int x, int y, DxInitSprite sprite)
-            :
-            base(sprite.ImagePath, sprite.GraphicDevice, sprite.Framewidth, sprite.Frameheight)
+            :base(sprite.ImagePath, sprite.GraphicDevice, sprite.Framewidth, sprite.Frameheight)
         {
             this._x = x;
             this._y = y;
