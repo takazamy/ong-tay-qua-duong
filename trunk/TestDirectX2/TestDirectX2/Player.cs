@@ -48,8 +48,11 @@ namespace TestDirectX2
                 if (_keyState[Key.D])
                 {
                     PositionX = PositionX + _moveSpeed;
+
                 }
             }
+            else 
+            { }
 
         }
         public override void Attack()
@@ -59,6 +62,7 @@ namespace TestDirectX2
         public override void Draw(int x, int y, Surface surface)
         {
            base.Draw(x,y,surface);
+           _animation.Draw(x, y, surface);
         }
     }
 }
