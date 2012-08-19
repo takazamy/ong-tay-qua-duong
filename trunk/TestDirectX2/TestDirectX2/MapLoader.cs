@@ -14,7 +14,7 @@ namespace TestDirectX2
         //{
         //    get { return _height; }
         //}
-
+        private DxInitGraphics _graphics;
         private int _condition = 0;
 
         public int Condition
@@ -29,6 +29,10 @@ namespace TestDirectX2
             get { return _enemies; }
         }
 
+        public MapLoader(DxInitGraphics graphics)
+        {
+            _graphics = graphics;
+        }
         public void LoadMap(string filePath)
         {
             XmlDocument doc = new XmlDocument();
@@ -36,31 +40,21 @@ namespace TestDirectX2
 
             _enemies = new List<Enemy>();
 
-            XmlNodeList maps = doc.SelectNodes("//map");
+            XmlNodeList maps = doc.SelectNodes("//Events");
             foreach (XmlNode map in maps)
             {
                 _condition = int.Parse(map.Attributes["x"].Value);
                 foreach (XmlNode _event in map.ChildNodes)
                 {
-                   
+                    // x="300" y="600" hp="10" dmg="10" power ="10" direction ="1"
                     int x = int.Parse(_event.Attributes["x"].Value);
                     int y = int.Parse(_event.Attributes["y"].Value);
-                    
-                   // int type = int.Parse(_event.Attributes["type"].Value);
-                   // DxInitSprite tempSprite = new DxInitSprite("Assets/walk.png"
-                    //Enemy e = new Enemy(x, y, 10, 10, 10, 5, "Assets/walk.png", -1);
-
-                    //switch (type)
-                    //{
-                    //    case 1:
-                    //        e.Position = new System.Drawing.Point(x, y);
-                    //        break;
-                    //    case 2:
-                    //        e.Position = new System.Drawing.Point(x1, y1);
-                    //        break;
-                    //}
-
-                   // _enemies.Add(e);
+                    int hp = int.Parse(_event.Attributes["hp"].Value);
+                    int dmg = int.Parse(_event.Attributes["dmg"].Value);
+                    int power = int.Parse(_event.Attributes["power"].Value);
+                    int direction = int.Parse(_event.Attributes["direction"].Value);
+                    Enemy _enemy = new Enemy(x, y, hp, dmg, power, 5, new Core.DxInitSprite("Assets/walk.png", _graphics.GraphicsDevice, 104, 150), direction);
+                    _enemies.Add(_enemy);
                 }
             }
         }

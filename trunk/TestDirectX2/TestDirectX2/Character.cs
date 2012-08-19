@@ -104,7 +104,7 @@ namespace TestDirectX2
             set { _state = value; }
         }
 
-#endregion
+        #endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
         {
