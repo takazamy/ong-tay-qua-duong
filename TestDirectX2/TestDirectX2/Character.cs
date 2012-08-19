@@ -10,9 +10,9 @@ namespace TestDirectX2
 {
     public struct AnimationKey
     {
-        public int _length;
+        public int _current;
        // int[] range = new int[x];
-       public int[] _range;
+        public List<int> _range;
         //public AnimationKey(int[] _range, int length)
         //{
         //    _length = length;
@@ -22,6 +22,7 @@ namespace TestDirectX2
     public class Character
     {
         //protected DxInitSprite _image;
+        #region Properties
         protected DxInitSprite _sprite = null;
 
         public DxInitSprite Sprite
@@ -102,6 +103,8 @@ namespace TestDirectX2
             get { return _state; }
             set { _state = value; }
         }
+
+#endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
         {

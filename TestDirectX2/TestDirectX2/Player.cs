@@ -18,8 +18,13 @@ namespace TestDirectX2
         public Player(float x, float y, int hp, int damage, int power, int moveSpeed, DxInitSprite sprite,int direction):
             base(x,y,hp,damage,power,moveSpeed,sprite,direction)
         {
-            
-            
+
+            _move._range = new List<int>();
+            _move._range.Add(1);
+            _move._range.Add(2);
+            _move._range.Add(3);
+            _move._range.Add(4);
+            _move._current = _move._range[0];
         }
 
 
@@ -27,7 +32,7 @@ namespace TestDirectX2
         {
             base.Update(deltaTime, keyState, mouseState);
             Move(keyState);
-
+            //_animation.Update((float)deltaTime);
         }
         public override void Move(Microsoft.DirectX.DirectInput.KeyboardState keyState)
         {
@@ -40,6 +45,14 @@ namespace TestDirectX2
                 {
                     //_state = Status.C_MOVE;
                     PositionX = PositionX - MoveSpeed;
+                    if (_move._current >0)
+                    {
+                        _move._current--;
+                    } if (_move._current == 0)
+                    {
+                        _move._current = _move._range[_move._range.Count - 1];
+                    }
+                    _animation.CurrentFrame = _move._current;
                 }
 
                 //on move right
@@ -47,6 +60,15 @@ namespace TestDirectX2
                 if (_keyState[Key.D])
                 {
                     PositionX = PositionX + MoveSpeed;
+                    if (_move._current < _move._range.Count)
+                    {
+                        _move._current++;
+                    }
+                    if (_move._current == _move._range.Count)
+                    {
+                        _move._current = _move._range[0];
+                    }
+                    _animation.CurrentFrame = _move._current;
                     //_state = Status.C_MOVE;
                 }
 
