@@ -5,7 +5,7 @@ using System.Text;
 using TestDirectX2.Core;
 using System.Drawing;
 using Microsoft.DirectX.DirectInput;
-
+using Microsoft.DirectX.DirectDraw;
 namespace TestDirectX2.Screen
 {
     public class MapScreen:DxScreen
@@ -13,10 +13,12 @@ namespace TestDirectX2.Screen
         private List<Character> _characterList;
         private Camera _camera;
         private DxInitImage _mapImage;
+        private Player _player;
 
-        public MapScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, DxInitImage mapImage) :
+        public MapScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, DxInitImage mapImage, Player player) :
             base(scrManager, graphics, location, mapImage.SourceImage.Size)
         {
+            _player = player;
             _mapImage = mapImage;
             Initialize();
         }
@@ -25,7 +27,7 @@ namespace TestDirectX2.Screen
         {
             base.Initialize();
             _camera = new Camera(0,0,800,600);
-            _surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
+            //_surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
             _characterList = new List<Character>();
             _camera.RectBounding = new Rectangle(0, 0, 800, 600);
             //_playBtn = new DxButton(100, 100, new DxInitSprite("Assets/button-sprite.png", _graphics.GraphicsDevice, 150, 50));
@@ -51,7 +53,21 @@ namespace TestDirectX2.Screen
             {
                 c.Update(deltaTime, keyState, mouseState);
             }
-
+            //if ((_player.PositionX + _player.Sprite.Framewidth) < _mapImage.SourceImage.Width )
+           // {
+            float tempX= _player.PositionX;
+             _player.Update(deltaTime, keyState, mouseState);
+             if( (_player.PositionX + _player.Sprite.Framewidth >=  _mapImage.SourceImage.Width) || _player.PositionX < 0 )
+             {
+                 _player.PositionX = tempX;
+             }
+            //}
+            
+            if (_player.PositionX + _camera.RectBounding.Width / 2 <=  _mapImage.SourceImage.Width)
+            {
+                _camera.Update((float)deltaTime, (int)_player.PositionX, true);
+            }
+            
             base.Update(deltaTime, keyState, mouseState);
             //_playBtn.Update(deltaTime, mouseState);
 
@@ -59,13 +75,19 @@ namespace TestDirectX2.Screen
 
         public override void Draw(double deltaTime)
         {
+            _mapImage.DrawFast(0, 0, base.Surface, DrawFastFlags.Wait);
             foreach (Character c in _characterList)
             {
-               
+
                     c.Draw((int)c.PositionX,(int)c.PositionY,base.Surface);
-                
+
             }
-            _graphics.SecondarySurface.DrawFast(0, 0, base.Surface, _camera.RectBounding, Microsoft.DirectX.DirectDraw.DrawFastFlags.Wait);
+            //if( ((_player.PositionX + _player.Sprite.Framewidth) < _mapImage.SourceImage.Width) || _player.PositionX >= 0)
+            //{
+                _player.Draw((int)_player.PositionX, (int)_player.PositionY, base.Surface);
+            //}
+            
+            _graphics.SecondarySurface.DrawFast(0, 0, base.Surface, _camera.RectBounding, DrawFastFlags.Wait);
 
            // bg.DrawFast(0, 0, base.Surface, DrawFastFlags.Wait);
             //_playBtn.DrawFast(base.Surface, DrawFastFlags.Wait);

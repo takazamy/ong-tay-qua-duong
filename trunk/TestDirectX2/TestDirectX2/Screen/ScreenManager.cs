@@ -14,10 +14,11 @@ namespace TestDirectX2
             GS_SPLASH_SCREEN = 0,
             GS_MENU = 1,
             GS_LEVEL = 2,
-           // GS_HELP = 3,
-           // GS_CREDIT = 4,
-            GS_MAIN_GAME = 4,
-            GS_EXIT = 6,
+            GS_HELP = 3,
+            GS_CREDIT = 4,
+            GS_MAIN_GAME = 5,
+            GS_ENDGAME = 6,
+            GS_EXIT =7
         }
 
         public GameState _state = GameState.GS_SPLASH_SCREEN;
@@ -28,6 +29,17 @@ namespace TestDirectX2
         {
             get { return _children; }
             
+        }
+
+        public DxScreen this[int index] {
+            get
+            {
+                return _children[index];
+            }
+            set 
+            {
+                _children[index] = value;
+            }
         }
 
         private DxScreen _currentScreen = null;

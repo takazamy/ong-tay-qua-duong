@@ -4,22 +4,25 @@ using System.Linq;
 using System.Text;
 using TestDirectX2.Core;
 using System.Drawing;
+using TestDirectX2.Screen;
 
 namespace TestDirectX2.Screen
 {
     public class LevelScreen:DxScreen
     {
+
         MainGameScreen mainScreen;
         DxInitImage initImage;
         Point pX;
         Point pY;
         List<DxScreen> lstScreen;
         List<DxButton> lstButton;
+        private Player _player;
         
-        
-        public LevelScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, Size size) :
+        public LevelScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, Size size, Player player) :
             base(scrManager,graphics, location, size)
         {
+            _player = player;
             Initialize();
         }
         
@@ -34,11 +37,14 @@ namespace TestDirectX2.Screen
             playBtn.OnMouseDown = delegate()
             {
                 initImage = new DxInitImage("Assets/map1.png", _graphics.GraphicsDevice);
-                mainScreen = new MainGameScreen(_scrManager, _graphics, _location, _size, initImage);
-                lstScreen.Add(mainScreen);
-                _scrManager.Append(mainScreen);
+                string configPath = "Assets/level01.xml";
+                mainScreen = new MainGameScreen(_scrManager, _graphics, _location, _size, initImage, configPath, _player);
+               // _scrManager.Children[TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME] = mainScreen;
+                _scrManager[(int)TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME] = mainScreen;
+               // lstScreen.Add(mainScreen);
+               // _scrManager.Append(mainScreen);
                 _scrManager._state = TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME;
-                _scrManager.NextScreen();
+                _scrManager.PlayScreen((int)TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME);
             };
             
             
@@ -62,6 +68,7 @@ namespace TestDirectX2.Screen
             }
             base.Draw(deltaTime);
         }
+
 
     }
 }
