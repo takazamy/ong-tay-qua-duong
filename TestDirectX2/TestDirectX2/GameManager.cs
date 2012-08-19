@@ -15,7 +15,8 @@ namespace TestDirectX2
 
         private DxInitGraphics _graphics;
         private Control _renderTarget;
-
+        public static Player _player;
+        public static Camera _camera;
         public Control RenderTarget
         {
             get { return _renderTarget; }
@@ -42,15 +43,23 @@ namespace TestDirectX2
 
         public void Initialized()
         {
+            
+            _player = new Player(20,300,100,100,100,10,new Core.DxInitSprite("Assets/walk.png",_graphics.GraphicsDevice,80,150),1);
             _scrManager.Append(new SplashScreen(_scrManager, _graphics, Point.Empty,
               new Size(800, 600),
               5000));
             _scrManager.Append(new MenuScreen(_scrManager,_graphics,Point.Empty,
                  new Size(800, 600)));
-            //_scrManager.Append( new MainGameScreen(_scrManager, _graphics, Point.Empty,
-              //   new Size(800, 600), new Core.DxInitImage("Assets/map1.png",_graphics.GraphicsDevice)) );
-            _scrManager.Append(new LevelScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600))); 
+            
+            _scrManager.Append(new LevelScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600),_player)); 
+            _scrManager.Append(new InstructionScreen(_scrManager,_graphics,Point.Empty,new Size(800,600) ) );
+            _scrManager.Append(new CreditScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600)));
+            string s = "Assets/level01.xml";
+            _scrManager.Append(new MainGameScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600), new Core.DxInitImage("Assets/map1.png", _graphics.GraphicsDevice),s,_player));
+            _scrManager.Append(new EndGameScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600)));
+
         }
+
         public void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
         {
             _scrManager.Update(deltaTime, keyState, mouseState);

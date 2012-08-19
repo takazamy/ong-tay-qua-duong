@@ -13,7 +13,7 @@ namespace TestDirectX2
 {
     public class Enemy:Character
     {
-        public Enemy(float x, float y, int hp, int damage, int power, float moveSpeed, DxInitSprite sprite, int direction) :
+        public Enemy(float x, float y, int hp, int damage, int power, int moveSpeed, DxInitSprite sprite, int direction) :
             base(x, y, hp,damage, power, moveSpeed, sprite, direction)
         {
            
@@ -32,15 +32,15 @@ namespace TestDirectX2
             //throw new NotImplementedException();
             //this._direction = direction;
 
-            if (_direction == -1)
+            if (Direction == -1)
             {
-                PositionX = PositionX - _moveSpeed; 
+                PositionX = PositionX - MoveSpeed; 
             }
-            if (_direction == 1)
+            if (Direction == 1)
             {
-                PositionX = PositionX + _moveSpeed;
+                PositionX = PositionX + MoveSpeed;
             }
-            if (_direction == 0)
+            if (Direction == 0)
             {
                 PositionX = PositionX;
             }
