@@ -12,9 +12,7 @@ namespace TestDirectX2.Screen
     {
 
         MainGameScreen mainScreen;
-        DxInitImage initImage;
-        Point pX;
-        Point pY;
+        DxInitImage initImage;        
         List<DxScreen> lstScreen;
         List<DxButton> lstButton;
         private Player _player;

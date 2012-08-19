@@ -16,22 +16,24 @@ namespace TestDirectX2.Screen
         DxInitImage _mapImage;
         //private List<Character> _characterList;
         //private Camera _camera;
-        private MapLoader _loader;
+        //private MapLoader _loader;
         private Player _player;
+        string _configPath;
 
         public MainGameScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size, DxInitImage mapImage,string configPath, Player player) :
             base(scrManager,graphics, location, size)
         {
             _mapImage = mapImage;
             _player = player;
-            _loader = new MapLoader();
-            _loader.LoadMap(configPath);
+            _configPath = configPath;
+           // _loader = new MapLoader();
+           // _loader.LoadMap(configPath);
             Initialize();
         }
         public override void Initialize()
         {
             base.Initialize();
-            _map = new MapScreen(_scrManager, _graphics, _location, _mapImage, _player);
+            _map = new MapScreen(_scrManager, _graphics, _location, _mapImage, _player, _configPath);
            
             //_camera = new Camera(0, 0, 800, 600);
             ////_surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
