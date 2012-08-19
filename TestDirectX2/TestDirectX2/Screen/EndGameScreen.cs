@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TestDirectX2.Core;
 using System.Drawing;
+using TestDirectX2.Core;
 
 namespace TestDirectX2.Screen
 {
-    public class InstructionScreen:DxScreen
+    public class EndGameScreen:DxScreen
     {
-        public InstructionScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size):
+        public EndGameScreen(ScreenManager scrManager,DxInitGraphics graphics, Point location, Size size):
             base(scrManager,graphics, location, size) { }
     }
 }

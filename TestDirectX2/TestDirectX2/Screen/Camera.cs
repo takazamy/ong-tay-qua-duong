@@ -43,9 +43,21 @@ namespace TestDirectX2.Screen
             _position = new Point(x, y);
         }
 
-        public void Update(float gameTime, int player_speed)
+        public void Update(float gameTime, int x, Boolean _check)
         {
-            _position.X += player_speed;
+            //_position.X += player_speed;
+
+            if (x < (_rectBounding.X + _rectBounding.Width)/2)
+            {
+                return;
+            }
+            if( (x >= (_rectBounding.X + _rectBounding.Width) / 2) && _check)
+            {
+                float temp = _rectBounding.X + _rectBounding.Width;
+                _rectBounding.X = x - _rectBounding.Width/2;
+                //_rectBounding.Y = y;
+            }
+            
         }
 
       
