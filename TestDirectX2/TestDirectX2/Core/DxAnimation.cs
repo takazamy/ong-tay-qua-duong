@@ -19,7 +19,7 @@ namespace TestDirectX2.Core
         private float _frameTime;
         private float _ellapseMillisec = 0;
 
-        private bool _isLoop;
+        private bool _isLoop = false;
 
         public bool IsLoop
         {
