@@ -46,7 +46,7 @@ namespace TestDirectX2
                     int x = int.Parse(_event.Attributes["x"].Value);
                     int y = int.Parse(_event.Attributes["y"].Value);
                     
-                    int type = int.Parse(_event.Attributes["type"].Value);
+                   // int type = int.Parse(_event.Attributes["type"].Value);
                    // DxInitSprite tempSprite = new DxInitSprite("Assets/walk.png"
                     //Enemy e = new Enemy(x, y, 10, 10, 10, 5, "Assets/walk.png", -1);
 
