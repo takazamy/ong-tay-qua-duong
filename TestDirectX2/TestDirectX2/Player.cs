@@ -36,8 +36,16 @@ namespace TestDirectX2
         }
         public override void Move(Microsoft.DirectX.DirectInput.KeyboardState keyState)
         {
-            base.Move(keyState);
-            if (_keyState != null)
+            //base.Move(keyState);
+            Boolean _keyDown = false;
+            for (int i = 0; i < 256; i++)
+            {
+                if (_keyState[(Key)i])
+                {
+                    _keyDown = true;
+                }
+            }
+            if (_keyDown)
             {
 
                 //on move left
@@ -54,6 +62,7 @@ namespace TestDirectX2
                     }
                     _animation.CurrentFrame = _move._current;
                 }
+                
 
                 //on move right
 
@@ -74,10 +83,11 @@ namespace TestDirectX2
 
 
             }
-            //else
-            //{
-            //    _state = Status.C_STAY;
-            //}
+            else
+            {
+                _move._current = _move._range[0];
+                _animation.CurrentFrame = _move._current;
+            }
 
         }
         public override void Attack()
