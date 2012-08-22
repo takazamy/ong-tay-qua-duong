@@ -32,7 +32,7 @@ namespace TestDirectX2.Screen
             DxButton playBtn = new DxButton(10, 10, "Assets/button-sprite.png", _graphics.GraphicsDevice, 50, 50);
             lstButton.Add(playBtn);
 
-            playBtn.OnMouseDown = delegate()
+            playBtn.OnMouseUp = delegate()
             {
                 initImage = new DxInitImage("Assets/map1.png", _graphics.GraphicsDevice);
                 string configPath = "Assets/level01.xml";

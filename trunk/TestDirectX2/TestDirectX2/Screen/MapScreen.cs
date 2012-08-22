@@ -16,6 +16,9 @@ namespace TestDirectX2.Screen
         private Player _player;
         private string _configPath;
         private MapLoader _loader;
+        private List<int> _conditionList;
+        private int _currentCondition;
+
         //private 
 
         public MapScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, DxInitImage mapImage, Player player, string configPath) :
@@ -41,6 +44,10 @@ namespace TestDirectX2.Screen
                 _characterList.Add(enemy);
             }
 
+            //foreach (int _condition in _loader.ConditionList)
+            //{
+            //    _conditionList.Add(_condition);
+            //}
             //for (int i = 0; i < _loader.Enemies.Count; i++)
             //{
             //    _characterList.Add(_loader.Enemies[i]);
