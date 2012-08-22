@@ -9,11 +9,16 @@ namespace TestDirectX2.Core
     public class DxAnimation
     {
         private DxInitSprite _sprite;
-
         public DxInitSprite Sprite
         {
             get { return _sprite; }
            
+        }
+
+        private AnimationKey _currentKey;
+        public AnimationKey CurrentKey {
+            get { return _currentKey; }
+            set { _currentKey = value; }
         }
 
         private float _frameTime;
@@ -49,9 +54,33 @@ namespace TestDirectX2.Core
             {
                 _ellapseMillisec = 0;
                 _currentFrame++;
-                if (_currentFrame > _sprite.TotalFrame)
+                if (_currentKey == null)
                 {
-                    _currentFrame = 1;
+                    if (_currentFrame > _sprite.TotalFrame)
+                    {
+                        if (_isLoop)
+                        {
+                            _currentFrame = 1;
+                        }
+                        else
+                        {
+                            _currentFrame = _sprite.TotalFrame;
+                        }
+                    }
+                }
+                else
+                {
+                    if (_currentFrame > _currentKey._range.Last())
+                    {
+                        if (_isLoop)
+                        {
+                            _currentFrame = _currentKey._range.First();
+                        }
+                        else
+                        {
+                            _currentFrame = _currentKey._range.Last();
+                        }
+                    }
                 }
             }
         }
