@@ -29,6 +29,14 @@ namespace TestDirectX2
             get { return _enemies; }
         }
 
+        private List<int> _conditionList;
+
+        public List<int> ConditionList
+        {
+            get { return _conditionList; }
+            set { _conditionList = value; }
+        }
+
         public MapLoader(DxInitGraphics graphics)
         {
             _graphics = graphics;
@@ -39,7 +47,7 @@ namespace TestDirectX2
             doc.Load(filePath);
 
             _enemies = new List<Enemy>();
-
+            _conditionList = new List<int>();
             XmlNodeList maps = doc.SelectNodes("//Events");
             foreach (XmlNode map in maps)
             {
@@ -56,6 +64,7 @@ namespace TestDirectX2
                     Enemy _enemy = new Enemy(x, y, hp, dmg, power, 5, new Core.DxInitSprite("Assets/walk.png", _graphics.GraphicsDevice, 104, 150), direction);
                     _enemies.Add(_enemy);
                 }
+                _conditionList.Add(_condition);
             }
         }
     }

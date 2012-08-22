@@ -22,6 +22,7 @@ namespace TestDirectX2
         public Enemy(float x, float y, int hp, int damage, int power, int moveSpeed, DxInitSprite sprite, int direction) :
             base(x, y, hp,damage, power, moveSpeed, sprite, direction)
         {
+            _moveR = new AnimationKey();
             _moveR._range = new List<int>();
             _moveR._range.Add(1);
             _moveR._range.Add(2);
@@ -29,8 +30,9 @@ namespace TestDirectX2
             _moveR._range.Add(4);
             _moveR._range.Add(5);
             _moveR._range.Add(6);
-            _moveR._current = _moveR._range[0];
+            _moveR._isLoop = true;
 
+            _moveL = new AnimationKey();
             _moveL._range = new List<int>();
             _moveL._range.Add(7);
             _moveL._range.Add(8);
@@ -38,18 +40,20 @@ namespace TestDirectX2
             _moveL._range.Add(10);
             _moveL._range.Add(11);
             _moveL._range.Add(12);
-            _moveL._current = _moveL._range[0];
+            _moveL._isLoop = true;
 
+            _stay = new AnimationKey();
             _stay._range = new List<int>();
             _stay._range.Add(13);
             _stay._range.Add(14);
-            _stay._current = _stay._range[(_direction - 1) >= 0 ? 0 : 1];
-            _animation.CurrentFrame = _stay._current;
+            _stay._isLoop = false;
+            _aniPlayer.PlayKey(_stay);
         }
 
         public override void Update(double deltaTime, Microsoft.DirectX.DirectInput.KeyboardState keyState, Microsoft.DirectX.DirectInput.MouseState mouseState)
         {
             base.Update(deltaTime, keyState, mouseState);
+            _aniPlayer.Update((float)deltaTime);
             Move(keyState);
         }
 
@@ -62,34 +66,17 @@ namespace TestDirectX2
             {
                 PositionX = PositionX - MoveSpeed;
 
-                if (_moveL._current < 12)
-                {
-                    _moveL._current++;
-                } if (_moveL._current == 12)
-                {
-                    _moveL._current = _moveL._range[0];
-                }
-                _animation.CurrentFrame = _moveL._current;
-                _stay._current = _stay._range[(_direction - 1) >= 0 ? 0 : 1];
+                _aniPlayer.PlayKey(_moveL);
             }
             if (Direction == 1)
             {
                 PositionX = PositionX + MoveSpeed;
-                if (_moveR._current < _moveR._range.Count)
-                {
-                    _moveR._current++;
-                }
-                if (_moveR._current == _moveR._range.Count)
-                {
-                    _moveR._current = _moveR._range[0];
-                }
-                _animation.CurrentFrame = _moveR._current;
-                _stay._current = _stay._range[(_direction - 1) >= 0 ? 0 : 1];
+                _aniPlayer.PlayKey(_moveR);
             }
             if (Direction == 0)
             {
                 PositionX = PositionX;
-                _animation.CurrentFrame = _stay._current;
+                _aniPlayer.PlayKey(_stay);
             } 
         }
         public override void Attack()
@@ -99,7 +86,7 @@ namespace TestDirectX2
         public override void Draw(int x, int y, Surface surface)
         {
             base.Draw(x,y,surface);
-            Animation.Draw(x, y, surface);
+            _aniPlayer.Draw(x, y, surface);
         }
     }
 }

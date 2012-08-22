@@ -8,17 +8,12 @@ using Microsoft.DirectX.DirectDraw;
 
 namespace TestDirectX2
 {
-    public struct AnimationKey
+    public class AnimationKey
     {
-        public int _current;
-       // int[] range = new int[x];
         public List<int> _range;
-        //public AnimationKey(int[] _range, int length)
-        //{
-        //    _length = length;
-        //    _range = new int[_length];
-        //}
+        public bool _isLoop;
     }
+
     public class Character
     {
         //protected DxInitSprite _image;
@@ -30,13 +25,15 @@ namespace TestDirectX2
             get { return _sprite; }
             set { _sprite = value; }
         }
-        protected DxAnimation _animation;
 
-        public DxAnimation Animation
+        protected AnimationPlayer _aniPlayer;
+        public AnimationPlayer AniPlayer
         {
-            get { return _animation; }
-            set { _animation = value; }
+            get { return _aniPlayer; }
+            set { _aniPlayer = value; }
         }
+
+
         protected int _hp = 100;
 
         public int Hp
@@ -117,7 +114,10 @@ namespace TestDirectX2
             _moveSpeed = moveSpeed;
 
             _direction = direction;
-            _animation = new DxAnimation(_sprite, 40f, false);
+            DxAnimation animation = new DxAnimation(_sprite, 100f, true);
+
+            _aniPlayer = new AnimationPlayer();
+            _aniPlayer.Play(animation);
 
             _direction = direction;
 
@@ -139,7 +139,7 @@ namespace TestDirectX2
         }
 
         public virtual void Draw(int x,int y,Surface surface) {
-            _animation.Draw(x, y, surface);
+            _aniPlayer.Draw(x, y, surface);
         }
         
     }
