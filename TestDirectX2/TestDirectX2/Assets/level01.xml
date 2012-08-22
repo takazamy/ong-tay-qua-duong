@@ -2,7 +2,7 @@
 <maps>
 	<Events x="200">
 		<Enemy x="100" y="300" hp="10" dmg="10" power ="10" direction ="1" type="1"></Enemy>
-    <Enemy x="150" y="300" hp="10" dmg="10" power ="10" direction ="-1" type="1"></Enemy>
+    <Enemy x="600" y="300" hp="10" dmg="10" power ="10" direction ="-1" type="1"></Enemy>
 	</Events>	
 	
 </maps>
