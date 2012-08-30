@@ -55,6 +55,7 @@ namespace TestDirectX2
             base.Update(deltaTime, keyState, mouseState);
             _aniPlayer.Update((float)deltaTime);
             Move(keyState);
+
         }
 
         public override void Move(KeyboardState keyState)
@@ -79,9 +80,9 @@ namespace TestDirectX2
                 _aniPlayer.PlayKey(_stay);
             } 
         }
-        public override void Attack()
+        public override void Attack(KeyboardState keyState)
         {
-            base.Attack();
+            base.Attack(keyState);
         }
         public override void Draw(int x, int y, Surface surface)
         {

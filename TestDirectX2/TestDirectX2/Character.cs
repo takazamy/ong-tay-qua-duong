@@ -5,6 +5,7 @@ using System.Text;
 using TestDirectX2.Core;
 using Microsoft.DirectX.DirectInput;
 using Microsoft.DirectX.DirectDraw;
+using System.Drawing;
 
 namespace TestDirectX2
 {
@@ -101,6 +102,13 @@ namespace TestDirectX2
             set { _state = value; }
         }
 
+        protected Rectangle _bound;
+
+        public Rectangle Bound
+        {
+            get { return _bound; }
+            set { _bound = value; }
+        }
         #endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
@@ -112,7 +120,7 @@ namespace TestDirectX2
             _power = power;
             _sprite = sprite;
             _moveSpeed = moveSpeed;
-
+            _bound = new Rectangle((int)x,(int) y, sprite.Framewidth,sprite.Frameheight);
             _direction = direction;
             DxAnimation animation = new DxAnimation(_sprite, 100f, true);
 
@@ -128,14 +136,16 @@ namespace TestDirectX2
         public virtual void Move(KeyboardState keyState)
         { }
 
-        public virtual void Attack()
+        public virtual void Attack(KeyboardState keyState)
         { }
 
         public virtual void Update(double deltaTime, KeyboardState keyState, MouseState mouseState) 
         {
             _keyState = keyState;
             _mouseState = mouseState;
-            
+
+            _bound.X =(int) this.positionX;
+            _bound.Y = (int)this.positionY;
         }
 
         public virtual void Draw(int x,int y,Surface surface) {
