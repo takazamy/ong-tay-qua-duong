@@ -55,6 +55,7 @@ namespace TestDirectX2
         {
             base.Update(deltaTime, keyState, mouseState);
             Move(keyState);
+            Attack(keyState);
             _aniPlayer.Update((float)deltaTime);
         }
         public override void Move(Microsoft.DirectX.DirectInput.KeyboardState keyState)
@@ -99,9 +100,25 @@ namespace TestDirectX2
             }
 
         }
-        public override void Attack()
+        public override void Attack(KeyboardState keyState)
         {
-            base.Attack();
+            base.Attack(keyState);
+            Boolean _keyDown = false;
+            for (int i = 0; i < 256; i++)
+            {
+                if (_keyState[(Key)i])
+                {
+                    _keyDown = true;
+                }
+            }
+            if (_keyDown)
+            {
+                if (_keyState[Key.J])
+                {
+                    
+                }
+            }
+
         }
         public override void Draw(int x, int y, Surface surface)
         {
