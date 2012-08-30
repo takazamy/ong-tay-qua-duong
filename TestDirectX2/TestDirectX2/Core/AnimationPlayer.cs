@@ -9,7 +9,19 @@ namespace TestDirectX2.Core
     public class AnimationPlayer
     {
         private DxAnimation _animation;
+
+        public DxAnimation Animation
+        {
+            get { return _animation; }
+            set { _animation = value; }
+        }
         private AnimationKey _currentKey;
+
+        public AnimationKey CurrentKey
+        {
+            get { return _currentKey; }
+            set { _currentKey = value; }
+        }
 
         public void Play(DxAnimation animation)
         {
