@@ -41,6 +41,11 @@ namespace TestDirectX2.Core
             set { _graphicDevice = value; }
         }
 
+        protected Color[,] _colorMap;
+        public Color[,] ColorMap {
+            get { return _colorMap; } 
+        }
+
         public DxInitImage(String imagePath, Device graphicDevice)
         {
             _imagePath = imagePath;
@@ -57,6 +62,17 @@ namespace TestDirectX2.Core
             _desc.SurfaceCaps.OffScreenPlain = true;
             _desc.Width = _sourceImage.Width;
             _desc.Height = _sourceImage.Height;
+
+            Bitmap bmp = new Bitmap(_sourceImage);
+            _colorMap = new Color[_sourceImage.Height, _sourceImage.Width];
+            for (int y = 0; y < _colorMap.GetLength(0); y++)
+            {
+                for (int x = 0; x < _colorMap.GetLength(1); x++)
+                {
+                    _colorMap[y, x] = bmp.GetPixel(x, y);
+                }   
+            }
+
 
             _image = new Surface(new Bitmap(_sourceImage), _desc, _graphicDevice);
         }
