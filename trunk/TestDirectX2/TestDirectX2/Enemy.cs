@@ -80,9 +80,9 @@ namespace TestDirectX2
                 _aniPlayer.PlayKey(_stay);
             } 
         }
-        public override void Attack(KeyboardState keyState)
+        public override void Attack(double deltaTime, KeyboardState keyState)
         {
-            base.Attack(keyState);
+            base.Attack(deltaTime,keyState);
         }
         public override void Draw(int x, int y, Surface surface)
         {

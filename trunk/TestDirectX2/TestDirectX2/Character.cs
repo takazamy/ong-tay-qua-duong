@@ -108,7 +108,11 @@ namespace TestDirectX2
         {
             get { return _bound; }
             set { _bound = value; }
-        }
+        } 
+
+        protected double _atkTime = 300;
+        public Boolean _isInAtt = false;
+        protected Boolean _startTimerCount = false;
         #endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
@@ -136,7 +140,7 @@ namespace TestDirectX2
         public virtual void Move(KeyboardState keyState)
         { }
 
-        public virtual void Attack(KeyboardState keyState)
+        public virtual void Attack(double deltaTime,KeyboardState keyState)
         { }
 
         public virtual void Update(double deltaTime, KeyboardState keyState, MouseState mouseState) 
