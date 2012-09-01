@@ -77,14 +77,15 @@ namespace TestDirectX2.Core
             int row = (frameIndex - 1) / _columns;
             int startX = column*_framewidth;
             int startY = row*_frameheight;
-            Color[,] _currentColorMap = new Color[row, column];
-            for (int i = 0; i < row; i++)
+            Color[,] _currentColorMap = new Color[_frameheight, _framewidth];
+            for (int i = 0; i < _frameheight; i++)
 			{
-			    for (int j = 0; j < column; j++)
+                for (int j = 0; j < _framewidth; j++)
 			    {
                     _currentColorMap[i, j] = _colorMap[startY, startX];
                     startX += 1;
 			    }
+                startX = column * _framewidth;
                 startY += 1;
 			}
             return _currentColorMap;
