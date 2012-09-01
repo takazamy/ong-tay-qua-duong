@@ -43,8 +43,8 @@ namespace TestDirectX2
 
         public void Initialized()
         {
-            
-            _player = new Player(20,300,100,100,100,10,new Core.DxInitSprite("Assets/walk.png",_graphics.GraphicsDevice,104,150),1);
+
+            _player = new Player(20, 400, 100, 1, 100, 10, new Core.DxInitSprite("Assets/Player1.png", _graphics.GraphicsDevice, 144, 144), 1);
             _scrManager.Append(new SplashScreen(_scrManager, _graphics, Point.Empty,
               new Size(800, 600),
               5000));
