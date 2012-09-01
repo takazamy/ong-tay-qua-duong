@@ -25,7 +25,7 @@ namespace TestDirectX2
             base.Initialize();
             _surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
             _playBtn = new DxButton(100,100,new DxInitSprite("Assets/button-sprite.png",_graphics.GraphicsDevice,150,50));
-            bg = new DxInitImage("Assets/vietnam_war.jpg", _graphics.GraphicsDevice);
+            bg = new DxInitImage("Assets/MenuScreen.png", _graphics.GraphicsDevice);
 
             _playBtn.OnMouseDown = delegate()
             {

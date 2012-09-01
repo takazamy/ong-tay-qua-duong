@@ -40,7 +40,7 @@ namespace TestDirectX2
         {
             base.Initialize();
             _surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
-            bg = new DxInitImage("Assets/cave_bg.png", _graphics.GraphicsDevice);
+            bg = new DxInitImage("Assets/SplashScreen.png", _graphics.GraphicsDevice);
         }
 
         public override void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)

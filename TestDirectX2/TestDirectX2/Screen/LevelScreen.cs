@@ -34,7 +34,7 @@ namespace TestDirectX2.Screen
 
             playBtn.OnMouseUp = delegate()
             {
-                initImage = new DxInitImage("Assets/map1.png", _graphics.GraphicsDevice);
+                initImage = new DxInitImage("Assets/map1.jpg", _graphics.GraphicsDevice);
                 string configPath = "Assets/level01.xml";
                 mainScreen = new MainGameScreen(_scrManager, _graphics, _location, _size, initImage, configPath, _player);
                // _scrManager.Children[TestDirectX2.ScreenManager.GameState.GS_MAIN_GAME] = mainScreen;
