@@ -65,21 +65,25 @@ namespace TestDirectX2.Core
 
             Bitmap bmp = new Bitmap(_sourceImage);
             _colorMap = new Color[_sourceImage.Height, _sourceImage.Width];
-            for (int y = 0; y < _colorMap.GetLength(0); y++)
+            for (int y = 0; y < _sourceImage.Height; y++)
             {
-                for (int x = 0; x < _colorMap.GetLength(1); x++)
+                for (int x = 0; x < _sourceImage.Width; x++)
                 {
                     _colorMap[y, x] = bmp.GetPixel(x, y);
-                }   
+                }
             }
 
 
             _image = new Surface(new Bitmap(_sourceImage), _desc, _graphicDevice);
-        }
+            ColorKey colorKey = new ColorKey();
+            //colorKey.ColorSpaceHighValue = Color.FromArgb(0, 0, 0, 0).ToArgb();
+            colorKey.ColorSpaceLowValue = Color.Magenta.ToArgb();//Color.Transparent.ToArgb();
+            _image.SetColorKey(ColorKeyFlags.SourceDraw, colorKey);
+        }   
 
         public void DrawFast(int x, int y, Surface destSurface, DrawFastFlags flags) 
         {
-            destSurface.DrawFast(x, y, _image, flags);
+            destSurface.DrawFast(x, y, _image, DrawFastFlags.SourceColorKey | flags);
         }
     }
 }
