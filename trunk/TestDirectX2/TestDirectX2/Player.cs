@@ -82,23 +82,64 @@ namespace TestDirectX2
 
         public override void Update(double deltaTime, Microsoft.DirectX.DirectInput.KeyboardState keyState, Microsoft.DirectX.DirectInput.MouseState mouseState)
         {
+            base.Update(deltaTime, keyState, mouseState);
+            //_aniPlayer.Update((float)deltaTime);
+            //if (!CheckKeyDown(keyState))
+            //{
+            //    _onAttackKeyPress = false;
+            //}
+            if (_aniPlayer.CurrentKey == _attL || _aniPlayer.CurrentKey == _attR)
+            {
+                if (_aniPlayer.Animation.CurrentFrame == _aniPlayer.CurrentKey._range.Last())
+                {
+                    _isInAtt = false;
+                    
+                    if (_direction == 1)
+                    {
+                        _aniPlayer.PlayKey(_stayR);
+                    }
+                    else
+                    {
+                        _aniPlayer.PlayKey(_stayL);
+                    }
+                }
+            }
+
+            if (!CheckKeyDown(keyState) && (_aniPlayer.CurrentKey != _attL || _aniPlayer.CurrentKey != _attR) && !_isInAtt)
+            {
+                if (_direction == 1)
+                {
+                    _aniPlayer.PlayKey(_stayR);
+
+                }
+                else
+                {
+                    _aniPlayer.PlayKey(_stayL);
+                }
+            }
             if (_startTimerCount)
             {
                 _timer += deltaTime;
+            //    
                 if (_timer > _atkTime)
                 {
                     _timer = 0;
                     _startTimerCount = false;
-                    _isInAtt = false;
+                    
+                    _onAttackKeyPress = false;
                 }
             }
             
-            base.Update(deltaTime, keyState, mouseState);
-            Attack(deltaTime, keyState);
             
+            //if (!_onAttackKeyPress )
+            //{
+             Attack(deltaTime, keyState);  
+            //}
+                     
+            //Move(keyState);
             Move(keyState);
-            
             _aniPlayer.Update((float)deltaTime);
+            
         }
         public override void Move(Microsoft.DirectX.DirectInput.KeyboardState keyState)
         {
@@ -113,10 +154,11 @@ namespace TestDirectX2
             }
             if (_keyDown)
             {
-
+                
                 //on move left
                 if (_keyState[Key.A])
                 {
+                    _isInAtt = false;
                     //_state = Status.C_MOVE;
                     _direction = -1;
                     PositionX = PositionX - MoveSpeed;
@@ -128,6 +170,7 @@ namespace TestDirectX2
 
                 if (_keyState[Key.D])
                 {
+                    _isInAtt = false;
                     _direction = 1;
                     PositionX = PositionX + MoveSpeed;
                     _aniPlayer.PlayKey(_moveR);
@@ -136,22 +179,22 @@ namespace TestDirectX2
 
 
             }
-            else
-            {
-                if (!_isInAtt)
-                {
-                    if (_direction == 1)
-                    {
-                        _aniPlayer.PlayKey(_stayR);
-                    }
-                    else
-                    {
-                        _aniPlayer.PlayKey(_stayL);
-                    }
+            //else
+            //{
+            //    if (!_isInAtt && _startTimerCount)
+            //   {
+            //        if (_direction == 1)
+            //        {
+            //            _aniPlayer.PlayKey(_stayR);
+            //        }
+            //        else
+            //        {
+            //            _aniPlayer.PlayKey(_stayL);
+            //        }
                     
-                }
+            //    }
                
-            }
+            //}
 
         }
         public override void Attack(double deltaTime, KeyboardState keyState)
@@ -169,8 +212,10 @@ namespace TestDirectX2
             {
                 if (_keyState[Key.J])
                 {
-                    if (!_isInAtt )
+                    
+                    if (!_isInAtt && !_onAttackKeyPress)
                     {
+                        _onAttackKeyPress = true;
                         _isInAtt = true;
                         _startTimerCount = true;
                         if (_direction == 1)
@@ -187,7 +232,30 @@ namespace TestDirectX2
                     
                 }
             }
+            //else
+            //{
+            //   if (!_isInAtt)
+            //   {
+            //        if (_direction == 1)
+            //        {
+            //            _aniPlayer.PlayKey(_stayR);
+            //        }
+            //        else
+            //        {
+            //            _aniPlayer.PlayKey(_stayL);
+            //        }
 
+            //   }
+
+            //}
+
+        }
+
+        public void ResetAttack()
+        {
+            _timer = 0;
+            _startTimerCount = false;
+           // _isInAtt = true;
         }
         public override void Draw(int x, int y, Surface surface)
         {

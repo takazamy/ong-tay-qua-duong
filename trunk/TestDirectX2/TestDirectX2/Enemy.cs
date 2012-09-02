@@ -84,6 +84,9 @@ namespace TestDirectX2
         {
             base.Attack(deltaTime,keyState);
         }
+
+        
+
         public override void Draw(int x, int y, Surface surface)
         {
             base.Draw(x,y,surface);
