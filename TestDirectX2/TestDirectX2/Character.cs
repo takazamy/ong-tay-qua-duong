@@ -110,9 +110,13 @@ namespace TestDirectX2
             set { _bound = value; }
         } 
 
-        protected double _atkTime = 300;
+        protected double _atkTime = 500;
         public Boolean _isInAtt = false;
         protected Boolean _startTimerCount = false;
+        protected Boolean _onAttackKeyPress = false;
+        protected Boolean _isBeAttacked = false;
+        protected double _deActiveTime = 500;
+        protected double _deActiveTimer = 0;
         #endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
@@ -135,13 +139,34 @@ namespace TestDirectX2
 
         }
 
-        
+        public Boolean CheckKeyDown(KeyboardState keyState)
+        {
+            Boolean _keyDown = false;
+            for (int i = 0; i < 256; i++)
+            {
+                if (_keyState[(Key)i])
+                {
+                    _keyDown = true;
+                }
+            }
+            return _keyDown;
+        }
 
         public virtual void Move(KeyboardState keyState)
         { }
 
         public virtual void Attack(double deltaTime,KeyboardState keyState)
         { }
+
+        public virtual void BeAttacked(int damages)
+        {
+            if (!_isBeAttacked)
+            {
+                _hp -= damages; 
+            } 
+            _isBeAttacked = true;
+
+        }
 
         public virtual void Update(double deltaTime, KeyboardState keyState, MouseState mouseState) 
         {
@@ -150,6 +175,16 @@ namespace TestDirectX2
 
             _bound.X =(int) this.positionX;
             _bound.Y = (int)this.positionY;
+
+            if (_isBeAttacked)
+            {
+                _deActiveTimer += deltaTime;
+                if (_deActiveTimer >= _deActiveTime)
+                {
+                    _isBeAttacked = false;
+                    _deActiveTimer = 0;
+                }
+            }
         }
 
         public virtual void Draw(int x,int y,Surface surface) {
