@@ -133,12 +133,18 @@ namespace TestDirectX2.Screen
             #region Kiểm tra va chạm
             if (_player._isInAtt)
             {
+                //bool isAttacked = false;
                 for (int i = 0; i < _characterList.Count; i++)
 			    {
                     Character c = _characterList[i];
                     if (CollisionChecker.PixelCollisionDetection(_player, c))
                     {
-                        c.Hp -= _player.Damage;
+                       // if (!isAttacked)
+                       // {
+                            //c.Hp -= _player.Damage;
+                           // isAttacked = true;
+                       // }
+                        c.BeAttacked(_player.Damage);
                         if (c.Hp <= 0)
                         {
                             _characterList.Remove(c);
@@ -146,6 +152,10 @@ namespace TestDirectX2.Screen
                     }
                     //c = null;
 			    }
+                //if (isAttacked)
+                //{
+                //    _player.ResetAttack();
+                //}
 
             }
             #endregion
