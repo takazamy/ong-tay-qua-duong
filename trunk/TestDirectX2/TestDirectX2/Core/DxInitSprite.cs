@@ -67,7 +67,7 @@ namespace TestDirectX2.Core
             int column = (frameIndex - 1) % _columns;
             int row = (frameIndex - 1) / _columns;
             Rectangle srcRect = new Rectangle(column * _framewidth, row * _frameheight, _framewidth, _frameheight);
-            destSurface.DrawFast(x, y, _image, srcRect, flags);
+            destSurface.DrawFast(x, y, _image, srcRect,  DrawFastFlags.SourceColorKey | flags);
         }
 
         

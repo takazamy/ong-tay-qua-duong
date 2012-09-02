@@ -60,7 +60,7 @@ namespace TestDirectX2.Core
                 {
                     int xPixel1 = j - character1.Bound.Left;
                     int xPixel2 = j - character2.Bound.Left;
-                    if (_colorMap1[yPixel1, xPixel1] != Color.Transparent && _colorMap2[yPixel2, xPixel2] != Color.Transparent)
+                    if (_colorMap1[yPixel1, xPixel1] != Color.Magenta && _colorMap2[yPixel2, xPixel2] != Color.Magenta)
                     {
                         return true;
                     }
