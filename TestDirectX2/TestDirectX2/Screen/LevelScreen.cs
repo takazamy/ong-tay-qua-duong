@@ -34,6 +34,7 @@ namespace TestDirectX2.Screen
 
             playBtn.OnMouseUp = delegate()
             {
+                SoundManager.Instance.Stop(SoundManager.SoundType.LevelScreenMusic);
                 initImage = new DxInitImage("Assets/map1.jpg", _graphics.GraphicsDevice);
                 string configPath = "Assets/level01.xml";
                 mainScreen = new MainGameScreen(_scrManager, _graphics, _location, _size, initImage, configPath, _player);
@@ -50,6 +51,13 @@ namespace TestDirectX2.Screen
 
         public override void Update(double deltaTime, Microsoft.DirectX.DirectInput.KeyboardState keyState, Microsoft.DirectX.DirectInput.MouseState mouseState)
         {
+            if (SoundManager.Instance.isLoop)
+            {
+                if (SoundManager.Instance.CheckDuration(SoundManager.SoundType.LevelScreenMusic))
+                {
+                    SoundManager.Instance.Replay(SoundManager.SoundType.LevelScreenMusic);
+                }
+            }
             base.Update(deltaTime, keyState, mouseState);
             for (int i = 0; i < lstButton.Count; i++)
             {
@@ -59,7 +67,8 @@ namespace TestDirectX2.Screen
         }
         public override void Draw(double deltaTime)
         {
-            
+            SoundManager.Instance.Play(SoundManager.SoundType.LevelScreenMusic);
+            SoundManager.Instance.isLoop = true;
             for (int i = 0; i < lstButton.Count; i++)
             {
                 lstButton[i].DrawFast(base.Surface,Microsoft.DirectX.DirectDraw.DrawFastFlags.Wait);

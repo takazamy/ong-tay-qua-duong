@@ -35,6 +35,7 @@ namespace TestDirectX2
 
             _playBtn.OnMouseUp = delegate()
             {
+                SoundManager.Instance.Stop(SoundManager.SoundType.MenuScreenMusic);
                 _scrManager._state = ScreenManager.GameState.GS_LEVEL;
                 _scrManager.NextScreen();
               //  Console.WriteLine("Mouse up");
@@ -45,7 +46,13 @@ namespace TestDirectX2
         {
            // _ellapsedTime += deltaTime;
            //HandleKeyboard(keyState);
-
+            if (SoundManager.Instance.isLoop)
+            {
+                if (SoundManager.Instance.CheckDuration(SoundManager.SoundType.MenuScreenMusic))
+                {
+                    SoundManager.Instance.Replay(SoundManager.SoundType.MenuScreenMusic);
+                }
+            }
             base.Update(deltaTime, keyState, mouseState);
             _playBtn.Update(deltaTime, mouseState);
             
@@ -53,6 +60,8 @@ namespace TestDirectX2
                     
         public override void Draw(double deltaTime)
         {
+            SoundManager.Instance.Play(SoundManager.SoundType.MenuScreenMusic);
+            SoundManager.Instance.isLoop = true;
             bg.DrawFast(0, 0, base.Surface, DrawFastFlags.Wait);
             _playBtn.DrawFast(base.Surface, DrawFastFlags.Wait);
             //   .DrawFast(_location.X, _location.Y, bg.XImage, DrawFastFlags.Wait);
