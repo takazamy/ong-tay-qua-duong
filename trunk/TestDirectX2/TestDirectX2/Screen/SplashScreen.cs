@@ -29,7 +29,7 @@ namespace TestDirectX2
         public SplashScreen(ScreenManager scrManager, DxInitGraphics graphics, Point location, Size size, double liveTime) :
             base(scrManager,graphics, location, size)
         {
-           
+
            
            // _surface.DrawFast(_location.X, _location.Y, bg.XImage, DrawFastFlags.Wait);
             this._liveTime = liveTime;
@@ -46,6 +46,13 @@ namespace TestDirectX2
         public override void Update(double deltaTime, KeyboardState keyState, MouseState mouseState)
         {
             _ellapsedTime += deltaTime;
+            if (SoundManager.Instance.isLoop)
+            {
+                if (SoundManager.Instance.CheckDuration(SoundManager.SoundType.SplashScreenMusic))
+                {
+                    SoundManager.Instance.Play(SoundManager.SoundType.SplashScreenMusic);
+                }
+            }
             if (IsDone)
             {
                 _scrManager._state = TestDirectX2.ScreenManager.GameState.GS_MENU;
@@ -70,6 +77,7 @@ namespace TestDirectX2
         {
             if (mouseState.GetMouseButtons()[0] !=0 )
             {
+                SoundManager.Instance.Stop(SoundManager.SoundType.SplashScreenMusic);    
                 _scrManager._state = TestDirectX2.ScreenManager.GameState.GS_MENU;
                 _scrManager.NextScreen();
             }
@@ -78,7 +86,8 @@ namespace TestDirectX2
         public override void Draw(double deltaTime)
         {
             bg.DrawFast(0, 0, base.Surface, DrawFastFlags.Wait);
-                
+            SoundManager.Instance.Play(SoundManager.SoundType.SplashScreenMusic);
+            SoundManager.Instance.isLoop = true;
              //   .DrawFast(_location.X, _location.Y, bg.XImage, DrawFastFlags.Wait);
             base.Draw(deltaTime);
         }
