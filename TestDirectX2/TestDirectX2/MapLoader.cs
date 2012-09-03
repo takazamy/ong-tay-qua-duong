@@ -15,8 +15,9 @@ namespace TestDirectX2
         //    get { return _height; }
         //}
         private DxInitGraphics _graphics;
+        public string soundKey = "";
         private int _condition = 0;
-
+        public List<List<Enemy>> _enemyListCodition;
         public int Condition
         {
             get { return _condition; }
@@ -48,12 +49,22 @@ namespace TestDirectX2
 
             _enemies = new List<Enemy>();
             _conditionList = new List<int>();
+            _enemyListCodition = new List<List<Enemy>>();
+
+            XmlNodeList sounds = doc.SelectNodes("//Sound");
+            foreach (XmlNode sound in sounds)
+            {
+                soundKey = sound.Attributes["key"].Value;
+            }
+           
             XmlNodeList maps = doc.SelectNodes("//Events");
             foreach (XmlNode map in maps)
             {
+                List<Enemy> enemies = new List<Enemy>();
                 _condition = int.Parse(map.Attributes["x"].Value);
                 foreach (XmlNode _event in map.ChildNodes)
                 {
+                    
                     // x="300" y="600" hp="10" dmg="10" power ="10" direction ="1"
                     int x = int.Parse(_event.Attributes["x"].Value);
                     int y = int.Parse(_event.Attributes["y"].Value);
@@ -62,8 +73,10 @@ namespace TestDirectX2
                     int power = int.Parse(_event.Attributes["power"].Value);
                     int direction = int.Parse(_event.Attributes["direction"].Value);
                     Enemy _enemy = new Enemy(x, y, hp, dmg, power, 5, new Core.DxInitSprite("Assets/walk.png", _graphics.GraphicsDevice, 104, 150), direction);
-                    _enemies.Add(_enemy);
+                    enemies.Add(_enemy);
                 }
+                _enemyListCodition.Add(enemies);
+                enemies = null;
                 _conditionList.Add(_condition);
             }
         }
