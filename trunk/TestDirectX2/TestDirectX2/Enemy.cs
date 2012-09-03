@@ -18,7 +18,9 @@ namespace TestDirectX2
 
         AnimationKey _moveR;
         AnimationKey _moveL;
-        AnimationKey _stay;
+        AnimationKey _stayL;
+        AnimationKey _stayR;
+        
         public Enemy(float x, float y, int hp, int damage, int power, int moveSpeed, DxInitSprite sprite, int direction) :
             base(x, y, hp,damage, power, moveSpeed, sprite, direction)
         {
@@ -42,12 +44,19 @@ namespace TestDirectX2
             _moveL._range.Add(12);
             _moveL._isLoop = true;
 
-            _stay = new AnimationKey();
-            _stay._range = new List<int>();
-            _stay._range.Add(13);
-            _stay._range.Add(14);
-            _stay._isLoop = false;
-            _aniPlayer.PlayKey(_stay);
+            _stayL = new AnimationKey();
+            _stayL._range = new List<int>();
+            _stayL._range.Add(13);
+            _stayR = new AnimationKey();
+            _stayR._range = new List<int>();
+            _stayR._range.Add(14);
+            _stayR._isLoop = false;
+            if (this.Direction == 1)
+            {
+                _aniPlayer.PlayKey(_stayL);
+            }
+            else
+                _aniPlayer.PlayKey(_stayR);
         }
 
         public override void Update(double deltaTime, Microsoft.DirectX.DirectInput.KeyboardState keyState, Microsoft.DirectX.DirectInput.MouseState mouseState)
@@ -63,29 +72,40 @@ namespace TestDirectX2
             //throw new NotImplementedException();
             //this._direction = direction;
             
-            if (Direction == -1)
+            if (Direction == -1 && !isStop)
             {
                 PositionX = PositionX - MoveSpeed;
 
                 _aniPlayer.PlayKey(_moveL);
             }
-            if (Direction == 1)
+            if (Direction == 1 && !isStop)
             {
                 PositionX = PositionX + MoveSpeed;
                 _aniPlayer.PlayKey(_moveR);
             }
-            if (Direction == 0)
+            if (isStop)
             {
                 PositionX = PositionX;
-                _aniPlayer.PlayKey(_stay);
-            } 
+                if (Direction == 1)                
+                    _aniPlayer.PlayKey(_stayL);
+                if (Direction == -1)
+                    _aniPlayer.PlayKey(_stayR);
+            }
         }
         public override void Attack(double deltaTime, KeyboardState keyState)
         {
             base.Attack(deltaTime,keyState);
         }
 
-        
+        public override void BeAttacked(int damages)
+        {
+            base.BeAttacked(damages);
+            
+            if(this.Direction == 1)
+                this.positionX -= 20;
+            else
+                this.positionX += 20;
+        }
 
         public override void Draw(int x, int y, Surface surface)
         {

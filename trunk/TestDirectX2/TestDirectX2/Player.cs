@@ -107,10 +107,11 @@ namespace TestDirectX2
 
             if (!CheckKeyDown(keyState) && (_aniPlayer.CurrentKey != _attL || _aniPlayer.CurrentKey != _attR) && !_isInAtt)
             {
+                _isMoving = false;
                 if (_direction == 1)
                 {
                     _aniPlayer.PlayKey(_stayR);
-
+                    
                 }
                 else
                 {
@@ -158,6 +159,7 @@ namespace TestDirectX2
                 //on move left
                 if (_keyState[Key.A])
                 {
+                    _isMoving = true;
                     _isInAtt = false;
                     //_state = Status.C_MOVE;
                     _direction = -1;
@@ -170,6 +172,7 @@ namespace TestDirectX2
 
                 if (_keyState[Key.D])
                 {
+                    _isMoving = true;
                     _isInAtt = false;
                     _direction = 1;
                     PositionX = PositionX + MoveSpeed;
@@ -213,11 +216,13 @@ namespace TestDirectX2
                 if (_keyState[Key.J])
                 {
                     
-                    if (!_isInAtt && !_onAttackKeyPress)
+                    if (!_isInAtt && !_onAttackKeyPress && !_isMoving)
                     {
                         _onAttackKeyPress = true;
                         _isInAtt = true;
                         _startTimerCount = true;
+                        SoundManager.Instance.Play(SoundManager.SoundType.AtkSound);
+                        SoundManager.Instance.Replay(SoundManager.SoundType.AtkSound);
                         if (_direction == 1)
                         {
                             _aniPlayer.PlayKey(_attR);

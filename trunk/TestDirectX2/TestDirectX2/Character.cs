@@ -117,6 +117,8 @@ namespace TestDirectX2
         protected Boolean _isBeAttacked = false;
         protected double _deActiveTime = 500;
         protected double _deActiveTimer = 0;
+        protected Boolean _isMoving = false;
+        public Boolean isStop = false;
         #endregion
 
         public Character(float x, float y, int hp, int damage, int power , int moveSpeed, DxInitSprite sprite,int direction)
@@ -162,7 +164,8 @@ namespace TestDirectX2
         {
             if (!_isBeAttacked)
             {
-                _hp -= damages; 
+                _hp -= damages;
+                
             } 
             _isBeAttacked = true;
 
