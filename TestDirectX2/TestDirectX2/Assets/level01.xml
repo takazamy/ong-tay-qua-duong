@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <maps>
-	<Events x="200">
-		<Enemy x="100" y="300" hp="10" dmg="10" power ="10" direction ="1" type="1"></Enemy>
-    <Enemy x="600" y="300" hp="10" dmg="10" power ="10" direction ="-1" type="1"></Enemy>
-	</Events>	
-	
+  <Sound key = "Map1Music">  </Sound>
+	<Events type="1" x="200">
+		<Enemy x="800" y="400" hp="10" dmg="10" power ="10" direction ="1" type="1"></Enemy>
+    <Enemy x="800" y="400" hp="10" dmg="10" power ="10" direction ="-1" type="1"></Enemy>
+	</Events>
+
+  <Events type="1" x="800">
+    <Enemy x="1201" y="400" hp="10" dmg="10" power ="10" direction ="-1" type="1"></Enemy>
+    <Enemy x="400" y="400" hp="10" dmg="10" power ="10" direction ="1" type="1"></Enemy>
+  </Events>
+
 </maps>
