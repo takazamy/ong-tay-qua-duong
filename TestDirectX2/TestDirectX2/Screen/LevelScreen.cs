@@ -5,12 +5,13 @@ using System.Text;
 using TestDirectX2.Core;
 using System.Drawing;
 using TestDirectX2.Screen;
+using Microsoft.DirectX.DirectDraw;
 
 namespace TestDirectX2.Screen
 {
     public class LevelScreen:DxScreen
     {
-
+        private DxInitImage bg;
         MainGameScreen mainScreen;
         DxInitImage initImage;        
         List<DxScreen> lstScreen;
@@ -26,10 +27,11 @@ namespace TestDirectX2.Screen
         
         public override void Initialize()
         {
+           bg = new DxInitImage("Assets/levelScreen.jpg", _graphics.GraphicsDevice);
            lstScreen = new List<DxScreen>();
            lstButton = new List<DxButton>();
-           _surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
-            DxButton playBtn = new DxButton(10, 10, "Assets/button-sprite.png", _graphics.GraphicsDevice, 50, 50);
+           //_surface.ColorFill(Color.FromArgb(0, 255, 0, 255));
+           DxButton playBtn = new DxButton(50, 50, "Assets/levelmap1.png", _graphics.GraphicsDevice, 200, 200);
             lstButton.Add(playBtn);
 
             playBtn.OnMouseUp = delegate()
@@ -69,9 +71,10 @@ namespace TestDirectX2.Screen
         {
             SoundManager.Instance.Play(SoundManager.SoundType.LevelScreenMusic);
             SoundManager.Instance.isLoop = true;
+            bg.DrawFast(0, 0, base.Surface, DrawFastFlags.Wait);
             for (int i = 0; i < lstButton.Count; i++)
             {
-                lstButton[i].DrawFast(base.Surface,Microsoft.DirectX.DirectDraw.DrawFastFlags.Wait);
+                lstButton[i].DrawFast(base.Surface,DrawFastFlags.Wait);
             }
             base.Draw(deltaTime);
         }
