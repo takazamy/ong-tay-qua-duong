@@ -53,9 +53,9 @@ namespace TestDirectX2
             
             _scrManager.Append(new LevelScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600),_player)); 
             _scrManager.Append(new InstructionScreen(_scrManager,_graphics,Point.Empty,new Size(800,600) ) );
-            _scrManager.Append(new CreditScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600)));
+            _scrManager.Append(new CreditScreen(_scrManager, _graphics, new Point(200,300), new Size(400, 300)));
             string s = "Assets/level01.xml";
-            _scrManager.Append(new MainGameScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600), new Core.DxInitImage("Assets/map1.png", _graphics.GraphicsDevice),s,_player));
+            _scrManager.Append(new MainGameScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600), new Core.DxInitImage("Assets/map1.jpg", _graphics.GraphicsDevice),s,_player));
             _scrManager.Append(new EndGameScreen(_scrManager, _graphics, Point.Empty, new Size(800, 600)));
 
         }
